@@ -17,11 +17,11 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-    background-color: #020629;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: #020629;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 img, picture, video, canvas, svg {
@@ -40,6 +40,7 @@ p, h1, h2, h3, h4, h5, h6 {
 p {
   text-wrap: pretty;
 }
+
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
@@ -48,24 +49,120 @@ h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
+/* CONTAINER & CANVA */
+
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .canva {
-display: flex;
-width: 642px;
-height: 642px;
-padding: 19px;
-justify-content: center;
-align-items: center;
-border-radius: 5px;
-background: #010421;
-padding: 10px;
-overflow-y: auto;
-border: 10px solid #1D224E;
+  display: flex;
+  width: 642px;
+  height: 642px;
+  padding: 19px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: #010421;
+  overflow-y: auto;
+  border: 10px solid #1D224E;
+}
+
+/* RANGE SLIDER */
+
+input[type=range] {
+  background-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 18px 0;
+  width: 50%;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+/* WebKit Track & Thumb */
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: #3071a9;
+  border-radius: 1.3px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  width: 36px;
+  margin-top: -14px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* Firefox Track & Thumb */
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: #3071a9;
+  border-radius: 1.3px;
+}
+
+input[type=range]::-moz-range-thumb {
+  height: 16px;
+  width: 36px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* Internet Explorer / Edge (Legacy) Track & Thumb */
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 36px 0;
+  color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border-radius: 2.6px;
+}
+
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border-radius: 2.6px;
+}
+
+input[type=range]::-ms-thumb {
+   height: 16px;
+  width: 36px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
 }
