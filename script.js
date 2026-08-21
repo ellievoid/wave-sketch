@@ -5,7 +5,7 @@ let isMouseDown = false;
 
 // Prevents unwanted selection or dragging of text or elements
 window.addEventListener('mousedown', (e) => {
-    if (e.target.closest('canva')) {
+    if (e.target.closest('.canva')) {
         e.preventDefault();
     }
     isMouseDown = true;
