@@ -1,18 +1,18 @@
 const canva = document.querySelector('.canva');
 const slider = document.getElementById('grid-slider');
 
-let isMouseDown = false;
+let isPointerDown = false;
 
 // Prevents unwanted selection or dragging of text or elements
-window.addEventListener('mousedown', (e) => {
+window.addEventListener('pointerdown', (e) => {
     if (e.target.closest('.canva')) {
         e.preventDefault();
     }
-    isMouseDown = true;
+    isPointerDown = true;
 });
 
-window.addEventListener('mouseup', () => {
-    isMouseDown = false;
+window.addEventListener('pointerup', () => {
+    isPointerDown = false;
 });
 
 // Helper function for colouring a pixel
@@ -23,13 +23,14 @@ function colorPixel(target) {
 }
 
 // Event delegation on the Canva container rather than on all child elements
-canva.addEventListener('mousedown', (e) => {
+canva.addEventListener('pointerdown', (e) => {
     colorPixel(e.target);
 });
 
-canva.addEventListener('mouseover', (e) => {
-    if (isMouseDown) {
-        colorPixel(e.target);
+canva.addEventListener('pointermove', (e) => {
+    if (isPointerDown) {
+    const position = document.elementFromPoint(e.clientX, e.clientY);
+    colorPixel(position);
     }
 });
 
