@@ -1,5 +1,6 @@
 const canva = document.querySelector('.canva');
 const slider = document.getElementById('grid-slider');
+const button = document.querySelector('.button');
 
 let isPointerDown = false;
 
@@ -14,6 +15,13 @@ window.addEventListener('pointerdown', (e) => {
 window.addEventListener('pointerup', () => {
     isPointerDown = false;
 });
+
+button.addEventListener('click', (e) => {
+    const pixels = canva.querySelectorAll('.pixel');
+    pixels.forEach(pixel => {
+        pixel.style.backgroundColor = '';
+    })
+})
 
 // Helper function for colouring a pixel
 function colorPixel(target) {
@@ -58,3 +66,31 @@ slider.addEventListener('input', (e) => {
 });
 
 createGrid(slider.value);
+
+/* Using the Bresenhams Line Algorythm to fill in a straight line between start and endpoint*/
+function defineDistance(startX, startY, endX, endY) {
+    const deltaCol = Math.abs(endX - startX); // zero or positive number
+    const deltaRow = Math.abs(endY - startY);  // zero or positive number
+
+    let pointX = startX;
+    let pointY = startY;
+
+    const horizontalStep = (startX < endX) ? 1 : -1;
+    const verticalStep = (startY < endY) ? 1 : -1;
+
+    const points = [ ];
+
+    let difference = deltaCol - deltaRow;
+
+    while (true) {
+        const doubleDifference = 2 * difference;
+
+        if (doubleDifference > -deltaRow) { difference -= deltaRow; pointX += horizontalStep };
+        if (doubleDifference < deltaCol) { difference += deltaCol; pointY += verticalStep };
+
+        if ((pointX == endX) && (pointY == endY)) { break };
+
+        points.push({ "x" : pointX, "y" : pointY});
+    }
+    return points;
+}

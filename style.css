@@ -143,6 +143,20 @@ h6 {
   background-color: var(--color-navy-600);
 }
 
+/* TOOLBOX */
+.toolbox {
+  background: var(--bg-surface);
+  height: fit-content;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.workspace {
+  align-items: flex-start;
+  display: flex;
+  gap: 20px;
+}
+
 /* RANGE SLIDER */
 input[type="range"] {
   appearance: none;
